@@ -12,6 +12,13 @@ app.get("/greeting/:name", (req, res) => {
   res.send(`What's up, ${req.params.name}`);
 });
 
+app.get("/tip/:total/:tipPercentage", (req, res) => {
+  const total = req.params.total;
+  const tipPercentage = req.params.tipPercentage / 100;
+  const tipAmount = total * tipPercentage;
+  res.send(tipAmount.toFixed(2).toString());
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
